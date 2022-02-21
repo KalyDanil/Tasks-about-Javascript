@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lanh = "ru">
+    <body>
+        <script>
+            
+            function matrix(n) {
+                if (n == 1) {
+                    return alert (`1`);
+                }
+                
+                if (n == 2) {
+                    return alert(`1,2\n4,3`);
+                }
+
+                let arr = [];
+                arr.length = n;
+                let x = 1;
+                
+                for ( let i = 0; i < n; i++) {
+                    arr[i] = [];
+                    arr[i].length = n
+                }
+                
+                let ri = 0;
+                let ir = 0;
+                let nr = 0;
+
+                let di = 0;
+                let nd = 0;
+                let qnd = 0;
+
+                let li = 1;
+                let nl = 0;
+                let qnl = 0;
+
+                let ui = 1;
+                let nu = 0;
+                let iu = 0;
+                
+                while (n - ui !== 1) {
+                    // right
+                    
+                    for (let i = ri; i < (n - 1 - nr); i++) {
+                        arr[ir][i] = x;
+                        x += 1;
+                    }
+                    ri += 1;
+                    nr += 1;
+                    ir += 1;
+
+                    // down
+                    
+                    for (let i = di; i < (n - 1 - nd); i++) {
+                        arr[i][n - 1 - qnd] = x;
+                        x += 1;
+                    }
+                    di += 1;
+                    nd += 1;
+                    qnd += 1;
+
+                    // left
+                    
+                    for (let i = li; i < (n - nl); i++) {
+                        arr[n - 1 - qnl][n - i] = x;
+                        x += 1;
+                    }
+                    li += 1;
+                    nl += 1;
+                    qnl += 1;
+
+                    // up
+                    
+                    for (let i = ui; i < (n - nu); i++) {
+                        arr[ n - i][0 + iu] = x;
+                        x += 1;
+                    }
+                    ui += 1;
+                    nu += 1;
+                    iu += 1;
+                }
+                
+                if (n % 2 != 0) {
+                    arr[(n - 1) / 2][(n - 1) / 2] = x;
+                }
+
+                let answer = arr.join('\n');
+                alert(answer);
+                 
+            }
+
+            let x = Number(prompt ("Введите целое число"));
+            matrix(x);
+
+        </script>
+    </body>
+<html>
